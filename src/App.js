@@ -72,23 +72,23 @@ const useFetch = (url) =>{
 // return {data, loading};
 // }
 
-export default () =>{
-  const [count, setCount] = useState(0);
-  const {data, loading} = useFetch("https://api.randomuser.me/")
+// export default () =>{
+//   const [count, setCount] = useState(0);
+//   const {data, loading} = useFetch("https://api.randomuser.me/")
  
-  return <main>
-    <div className="">
-      <p>You clicked {count} times</p>
-      <button onClick={() =>setCount(count+1)}></button>
-      {loading ? <div>...loading</div>: <div>{data.name.first}</div>}
-      {/* <h3> Question and Answer</h3>
-      <section className="info">
-        { questions.map((question) => {
-            return <SingleQuestion key={question.id} {...question} />
-          })}
-      </section> */}
-    </div>
-  </main>
-}
+//   return <main>
+//     <div className="">
+//       <p>You clicked {count} times</p>
+//       <button onClick={() =>setCount(count+1)}></button>
+//       {loading ? <div>...loading</div>: <div>{data.name.first}</div>}
+//       {/* <h3> Question and Answer</h3>
+//       <section className="info">
+//         { questions.map((question) => {
+//             return <SingleQuestion key={question.id} {...question} />
+//           })}
+//       </section> */}
+//     </div>
+//   </main>
+// }
 
 // export default App;
