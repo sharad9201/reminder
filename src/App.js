@@ -4,6 +4,30 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [reminders, setReminders] = useState([])
+  
+  // const [reminder,setReminder]=useState("")
+
+  // function handleSubmit(e){
+  //   e.preventDefault();
+
+  //   const newReminder = {
+  //     text,
+  //     completed: false,
+  //   }
+
+    // setReminders([...reminders].concat(newReminder))
+    // setReminder("")
+    // console.log(newReminder);
+
+    fetch ("http://127.0.0.1:8000/api/store",{
+      method: 'POST',
+      header: {"Content-Type":"application/json"},
+      body: JSON.stringify(newReminder)
+    }).then(()=>{
+      console.log('new data added')
+    })
+  }
+
   useEffect(()=>{
     getReminders();
   },[])
@@ -13,6 +37,16 @@ function App() {
     fetch(url).then(resp=>resp.json())
     .then(resp=>setReminders(resp))
   }
+  function reminderInsert(){
+    fetch("http://127.0.0.1:8000/api/store",{
+      method:'POST'
+    }).then((result)=>{
+      result.json().then((resp)=>{
+        console.warn(resp)
+        getReminders();
+      })
+  })
+}
   function reminderDelete(id){
     // alert(id);
     fetch(`http://127.0.0.1:8000/api/delete/${id}`,{
@@ -24,24 +58,27 @@ function App() {
     })
   })
     
+ 
 
-  }
+  
   return <main>
     <section className="container">
-      {/* <h3 >{reminder.length} reminder games today </h3>
-      <List reminder={reminder}/>
-      <button onClick={()=> setReminder([])}>
-        clear all 
-        </button> */}
       
-        
+
+     {/* <div>
+       <form onSubmit={handleSubmit}>
+         <input type="text" onChange={(e)=>setReminder(e.target.value)} value={reminder.name} />
+          <button type="submit">Add Reminder</button>
+       </form>
+     </div> */}
       {
-        reminders.map(reminder=><div><p>{reminder.name} 
-        
+        reminders.map(reminder=><div><p>{reminder.name} </p> 
+
           <button onClick={()=>reminderDelete(reminder.id)}>Delete</button>
-          </p> 
+          
          </div>)
       }
+      <p>{reminder}</p>
 
       
     </section>
