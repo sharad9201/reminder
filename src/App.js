@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-
+import Update from './Update'
 
 function App() {
   
@@ -34,13 +34,17 @@ function App() {
   
   return <main>
     <section className="container">
-      <h1>Here goes the todo</h1>
+      <h3>Here goes the todo</h3>
       <div> 
         <input type="text" className="form-control" onChange={(e) =>setName(e.target.value)} placeholder="enter the todo"/>
         <button onClick={addTodo}>Add Button</button>
         {/* <p>{name}</p> */}
+        <Update />
+
+        
         
       </div>
+      
 
 
       
